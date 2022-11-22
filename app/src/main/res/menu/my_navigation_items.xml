@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_search"
+    <item android:id="@+id/action_home"
         android:title="@string/home"
+        android:iconTint="@android:color/transparent"
         android:icon="@drawable/marvel" />
-    <item android:id="@+id/action_settings"
+    <item android:id="@+id/action_comics"
         android:title="Comics"
         android:icon="@drawable/ic_launcher_foreground" />
-    <item android:id="@+id/action_navigation"
-        android:title="Navigation"
+    <item android:id="@+id/action_series"
+        android:title="Series"
+        android:icon="@drawable/ic_launcher_foreground" />
+    <item android:id="@+id/action_stories"
+        android:title="Stories"
         android:icon="@drawable/ic_launcher_foreground" />
 </menu>
