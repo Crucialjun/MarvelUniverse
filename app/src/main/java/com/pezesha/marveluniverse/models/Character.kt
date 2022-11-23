@@ -1,5 +1,9 @@
 package com.pezesha.marveluniverse.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Character(
     val name : String,
     val description :String,
@@ -9,6 +13,6 @@ data class Character(
     val thumbnail : Thumbnail?
 
 
-){
+) : Parcelable {
 
 }

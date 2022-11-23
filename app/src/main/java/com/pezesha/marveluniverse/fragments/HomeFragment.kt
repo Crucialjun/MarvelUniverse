@@ -11,23 +11,15 @@ import com.pezesha.marveluniverse.databinding.FragmentHomeBinding
 import com.pezesha.marveluniverse.models.Character
 import com.pezesha.marveluniverse.models.Thumbnail
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment() {
 
-    private var _binding : FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
 
     private val binding get() = _binding!!
 
-    private val characters : ArrayList<com.pezesha.marveluniverse.models.Character> = ArrayList<com.pezesha.marveluniverse.models.Character>()
-
-
-
-
-
+    private val characters: ArrayList<com.pezesha.marveluniverse.models.Character> =
+        ArrayList<com.pezesha.marveluniverse.models.Character>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,12 +33,18 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val recyclerview = binding.recyclerCharacters
-        characters.add(Character("This is one","This is one description",null,null,null,
-            Thumbnail("https://i.picsum.photos/id/239/200/300.jpg?hmac=jBV5mUiY1RXDAmu4rQXOdWeutyztlxqFSOVpnJ-QUb8",null)
-        ))
-        characters.add(Character("This is one","This is one description",null,null,null,null))
-        characters.add(Character("This is one","This is one description",null,null,null,null))
-        characters.add(Character("This is one","This is one description",null,null,null,null))
+        characters.add(
+            Character(
+                "This is one", "This is one description", null, null, null,
+                Thumbnail(
+                    "https://i.picsum.photos/id/239/200/300.jpg?hmac=jBV5mUiY1RXDAmu4rQXOdWeutyztlxqFSOVpnJ-QUb8",
+                    null
+                )
+            )
+        )
+        characters.add(Character("This is one", "This is one description", null, null, null, null))
+        characters.add(Character("This is one", "This is one description", null, null, null, null))
+        characters.add(Character("This is one", "This is one description", null, null, null, null))
         recyclerview.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = CharactersListAdapter(characters)

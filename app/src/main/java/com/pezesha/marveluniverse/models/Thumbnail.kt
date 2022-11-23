@@ -1,9 +1,14 @@
 package com.pezesha.marveluniverse.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Thumbnail(
     val path: String,
     val extension: Extension?
-)
+) : Parcelable
+
 enum class Extension(val value: String) {
     GIF("gif"),
     Jpg("jpg");
