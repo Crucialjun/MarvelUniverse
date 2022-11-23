@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    val characters : ArrayList<com.pezesha.marveluniverse.models.Character> = ArrayList<com.pezesha.marveluniverse.models.Character>()
+    private val characters : ArrayList<com.pezesha.marveluniverse.models.Character> = ArrayList<com.pezesha.marveluniverse.models.Character>()
 
 
 
