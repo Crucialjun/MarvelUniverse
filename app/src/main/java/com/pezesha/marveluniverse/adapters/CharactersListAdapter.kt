@@ -26,7 +26,7 @@ class CharactersListAdapter(private val data: List<com.pezesha.marveluniverse.mo
             with(data[position]) {
                 binding.txtCharacterName.text = this.name
                 binding.txtCharacterDescription.text = this.description
-                Glide.with(itemView).load(this.thumbnail).into(binding.imgCharacterThumbnail)
+                Glide.with(itemView).load(this.thumbnail!!.path).into(binding.imgCharacterThumbnail)
             }
         }
     }

@@ -2,7 +2,7 @@ package com.pezesha.marveluniverse.models
 
 data class Thumbnail(
     val path: String,
-    val extension: Extension
+    val extension: Extension?
 )
 enum class Extension(val value: String) {
     GIF("gif"),
