@@ -1,5 +1,6 @@
 package com.pezesha.marveluniverse.api
 
+import android.util.Log
 import com.pezesha.marveluniverse.BuildConfig
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -14,7 +15,9 @@ interface MarvelApi {
     }
     @GET("v1/public/characters")
     suspend fun loadCharacters(
-        //@Query("orderBy") orderBy :String,
+        @Query("ts") ts : String = TS,
+        @Query("apikey") apikey : String = PUBLIC_API_KEY,
+        @Query("hash") hash : String = "b8d0448f043833625561b3371c14053e",
         //@Query("limit")  limit : Int,
         //@Query("offset") offset : Int
     ) : ApiResponse

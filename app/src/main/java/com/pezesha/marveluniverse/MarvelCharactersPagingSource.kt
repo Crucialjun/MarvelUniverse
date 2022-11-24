@@ -25,7 +25,7 @@ class MarvelCharactersPagingSource(
             LoadResult.Page(
                 data = characters,
                 prevKey = if(currentPostion == 1 ) null else currentPostion - 1,
-                nextKey = if(characters.isEmpty()) null else currentPostion + 1,
+                nextKey = currentPostion + 1,
             )
         } catch (e : IOException){
             LoadResult.Error(e)
