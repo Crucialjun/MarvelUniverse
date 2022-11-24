@@ -9,6 +9,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: MarvelRepository) : ViewModel() {
-    val characters = repository.getCharacters().cachedIn(viewModelScope)
+    val characters = repository.getCharacters()
 
 }

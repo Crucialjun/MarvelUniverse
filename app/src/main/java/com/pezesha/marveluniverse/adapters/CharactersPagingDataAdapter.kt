@@ -1,13 +1,12 @@
 package com.pezesha.marveluniverse.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.pezesha.marveluniverse.R
+import com.nostra13.universalimageloader.core.ImageLoader
 import com.pezesha.marveluniverse.databinding.CharacterItemBinding
 import com.pezesha.marveluniverse.models.Character
 
@@ -27,13 +26,20 @@ class CharactersPagingDataAdapter :
     ) {
     inner class CharacterViewHolder(private val binding: CharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        var imageLoader: ImageLoader = ImageLoader.getInstance() // Get singleton instance
+
         fun bind(character: com.pezesha.marveluniverse.models.Character) {
+            Log.d("Image Url", "The image url is :${character.thumbnail!!.path}.jpg ")
             binding.apply {
-                Glide.with(itemView)
-                    .load(character.thumbnail?.path ?: "https://picsum.photos/200/300").centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade()).error(
-                    R.drawable.ic_baseline_home_24
-                ).into(imgCharacterThumbnail)
+
+//                Glide.with(itemView).setDefaultRequestOptions(RequestOptions().placeholder(R.drawable.ic_baseline_home_24).error(R.drawable.ic_baseline_home_24))
+//                    .load("${character.thumbnail!!.path}.jpg").centerCrop()
+//                    .transition(DrawableTransitionOptions.withCrossFade()).error(
+//                    R.drawable.ic_baseline_home_24
+//                ).into(imgCharacterThumbnail)
+               // Picasso.get().load("https://i.annihil.us/u/prod/marvel/i/mg/9/30/535feab462a64.jpg").resize(75,75).centerCrop().into(imgCharacterThumbnail)
+
+               imageLoader.displayImage("${character.thumbnail!!.path}.jpg",imgCharacterThumbnail)
                 txtCharacterName.text = character.name
                 txtCharacterDescription.text = character.description
 
@@ -51,6 +57,7 @@ class CharactersPagingDataAdapter :
 
 
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val binding =

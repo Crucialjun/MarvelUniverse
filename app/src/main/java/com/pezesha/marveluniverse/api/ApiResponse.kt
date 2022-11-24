@@ -1,9 +1,7 @@
 package com.pezesha.marveluniverse.api
 
+import com.pezesha.marveluniverse.models.Data
+
 data class ApiResponse(
-    val offset: Long,
-    val limit: Long,
-    val total: Long,
-    val count: Long,
-    val results: List<com.pezesha.marveluniverse.models.Character>
+    val data : Data
 )

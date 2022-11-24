@@ -16,6 +16,7 @@ class MarvelRepository @Inject constructor(private val marvelApi: MarvelApi) {
                 pageSize = 10,
                 maxSize = 100,
                 enablePlaceholders = false,
+                initialLoadSize = 10
 
             ),
             pagingSourceFactory = {  MarvelCharactersPagingSource(marvelApi) }

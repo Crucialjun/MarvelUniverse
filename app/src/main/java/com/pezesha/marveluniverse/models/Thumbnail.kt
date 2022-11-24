@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Thumbnail(
     val path: String,
-    val extension: Extension?
+    val extension: Extension
 ) : Parcelable
 
 enum class Extension(val value: String) {

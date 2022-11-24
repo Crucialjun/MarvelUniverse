@@ -1,5 +1,6 @@
 package com.pezesha.marveluniverse
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.pezesha.marveluniverse.api.MarvelApi
@@ -9,23 +10,26 @@ import java.io.IOException
 
 class MarvelCharactersPagingSource(
     private val marvelApi: MarvelApi,
-): PagingSource<Int,com.pezesha.marveluniverse.models.Character>() {
+): PagingSource<Int, Character>() {
     override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
         TODO("Not yet implemented")
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
-        val currentPostion = params.key ?:1
+        val currentPosition = params.key ?:1
 
         return try {
             val response = marvelApi.loadCharacters()
 
-            val characters = response.results
+            val characters = response.data.results
+
+            Log.d("Load Result", "load:$response ")
+            print("This is the load result $response")
 
             LoadResult.Page(
                 data = characters,
-                prevKey = if(currentPostion == 1 ) null else currentPostion - 1,
-                nextKey = currentPostion + 1,
+                prevKey = if(currentPosition == 1 || currentPosition < 1 ) null else currentPosition - 1,
+                nextKey = if(characters.isEmpty())null else currentPosition + 1,
             )
         } catch (e : IOException){
             LoadResult.Error(e)

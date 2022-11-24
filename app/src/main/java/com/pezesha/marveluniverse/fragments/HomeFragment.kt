@@ -1,6 +1,7 @@
 package com.pezesha.marveluniverse.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -49,13 +50,12 @@ class HomeFragment : Fragment() {
         val recyclerAdapter = CharactersPagingDataAdapter()
 
         viewModel.characters.observe(viewLifecycleOwner){
-            print(it.toString())
             recyclerAdapter.submitData(viewLifecycleOwner.lifecycle,it)
         }
         recyclerview.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = recyclerAdapter
-            setHasFixedSize(true)
+
 
         }
     }
