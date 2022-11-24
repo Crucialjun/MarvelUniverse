@@ -10,8 +10,9 @@ import com.pezesha.marveluniverse.adapters.CharactersListAdapter
 import com.pezesha.marveluniverse.databinding.FragmentHomeBinding
 import com.pezesha.marveluniverse.models.Character
 import com.pezesha.marveluniverse.models.Thumbnail
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
