@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         val recyclerAdapter = CharactersPagingDataAdapter()
 
         viewModel.characters.observe(viewLifecycleOwner){
+            print(it.toString())
             recyclerAdapter.submitData(viewLifecycleOwner.lifecycle,it)
         }
         recyclerview.apply {
