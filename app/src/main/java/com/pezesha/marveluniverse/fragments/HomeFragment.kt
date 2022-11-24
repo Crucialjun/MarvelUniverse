@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pezesha.marveluniverse.adapters.CharactersListAdapter
+import com.pezesha.marveluniverse.adapters.CharactersPagingDataAdapter
 import com.pezesha.marveluniverse.databinding.FragmentHomeBinding
 import com.pezesha.marveluniverse.models.Character
 import com.pezesha.marveluniverse.models.Thumbnail
@@ -37,17 +38,25 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val recyclerview = binding.recyclerCharacters
 
-        viewModel.characters.observe(viewLifecycleOwner){
+        val recyclerAdapter = CharactersPagingDataAdapter()
 
+        viewModel.characters.observe(viewLifecycleOwner){
+            recyclerAdapter.submitData(viewLifecycleOwner.lifecycle,it)
         }
         recyclerview.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = CharactersListAdapter(characters)
+            adapter = recyclerAdapter
+            setHasFixedSize(true)
 
         }
-        return binding.root
     }
 
     override fun onDestroy() {
