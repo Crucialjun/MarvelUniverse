@@ -10,7 +10,8 @@ data class Character(
     val comics : Comics?,
     val series : Comics?,
     val stories : Stories?,
-    val thumbnail : Thumbnail?
+    val thumbnail : Thumbnail?,
+    val id : Int?
 
 
 ) : Parcelable {

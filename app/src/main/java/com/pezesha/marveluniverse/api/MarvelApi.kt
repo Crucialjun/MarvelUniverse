@@ -14,9 +14,9 @@ interface MarvelApi {
     }
     @GET("v1/public/characters")
     suspend fun loadCharacters(
-        @Query("orderBy") orderBy :String,
-        @Query("limit")  limit : Int,
-        @Query("offset") offset : Int
+        //@Query("orderBy") orderBy :String,
+        //@Query("limit")  limit : Int,
+        //@Query("offset") offset : Int
     ) : ApiResponse
 
 
