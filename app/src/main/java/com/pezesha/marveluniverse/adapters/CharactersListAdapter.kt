@@ -16,13 +16,27 @@ import com.pezesha.marveluniverse.databinding.CharacterItemBinding
 import com.pezesha.marveluniverse.models.Character
 import com.pezesha.marveluniverse.models.Extension
 
-class CharactersListAdapter :
+class CharactersListAdapter(private val listener : OnItemClickListener) :
     ListAdapter<Character,CharactersListAdapter.CharacterHolder>(
         CharacterCompare()
     ) {
 
 
-    class CharacterHolder(private val  binding: CharacterItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CharacterHolder(private val  binding: CharacterItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            Log.d("TAG", "Item Clicked")
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if(position != RecyclerView.NO_POSITION){
+                    val item = getItem(position)
+                    if(item != null){
+                        listener.onItemClick(item)
+                    }
+                }
+
+            }
+        }
+
         fun bind(character: Character) {
             binding.apply {
 
@@ -67,6 +81,10 @@ class CharactersListAdapter :
         if (currentCharacter != null){
             holder.bind(currentCharacter)
         }
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(character : com.pezesha.marveluniverse.models.Character)
     }
 
     class CharacterCompare : DiffUtil.ItemCallback<com.pezesha.marveluniverse.models.Character>(){

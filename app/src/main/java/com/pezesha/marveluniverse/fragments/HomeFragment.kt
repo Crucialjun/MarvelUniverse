@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pezesha.marveluniverse.Resource
 import com.pezesha.marveluniverse.adapters.CharactersListAdapter
@@ -19,7 +20,7 @@ import com.pezesha.marveluniverse.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),CharactersListAdapter.OnItemClickListener {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -46,7 +47,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerview = binding.recyclerCharacters
 
-        val recyclerAdapter = CharactersListAdapter()
+        val recyclerAdapter = CharactersListAdapter(this)
 
         viewModel.characters.observe(viewLifecycleOwner) {
             Log.d("TAG", "onViewCreatedDta is ${it.data} ")
@@ -73,6 +74,11 @@ class HomeFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onItemClick(character: Character) {
+        val action = HomeFragmentDirections.actionHomeFragmentToCharacterDetailsFragment(character)
+        findNavController().navigate(action)
     }
 
 }

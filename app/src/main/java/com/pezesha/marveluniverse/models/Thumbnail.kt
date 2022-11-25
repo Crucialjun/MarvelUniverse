@@ -9,8 +9,8 @@ import org.json.JSONObject
 
 @Parcelize
 data class Thumbnail(
-    val path: String,
-    val extension: Extension
+    val path: String?,
+    val extension: Extension?
 ) : Parcelable
 
 enum class Extension(val value: String) {

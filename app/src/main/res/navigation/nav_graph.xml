@@ -18,5 +18,9 @@
         android:id="@+id/characterDetailsFragment"
         android:name="com.pezesha.marveluniverse.CharacterDetailsFragment"
         android:label="fragment_character_details"
-        tools:layout="@layout/fragment_character_details" />
+        tools:layout="@layout/fragment_character_details" >
+        <argument
+            android:name="character"
+            app:argType="com.pezesha.marveluniverse.models.Character" />
+    </fragment>
 </navigation>
