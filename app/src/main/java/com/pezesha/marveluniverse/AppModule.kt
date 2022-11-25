@@ -1,5 +1,7 @@
 package com.pezesha.marveluniverse
 
+import android.app.Application
+import androidx.room.Room
 import com.pezesha.marveluniverse.api.MarvelApi
 import dagger.Module
 import dagger.Provides
@@ -14,13 +16,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object AppModule {
 
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder().
-        baseUrl(MarvelApi.BASE_URL)
+        return Retrofit.Builder().baseUrl(MarvelApi.BASE_URL)
             .addConverterFactory(
                 GsonConverterFactory.create()
             )
@@ -28,9 +29,14 @@ object NetworkModule {
     }
 
 
-
     @Provides
     @Singleton
     fun providesMarvelApi(retrofit: Retrofit): MarvelApi = retrofit.create(MarvelApi::class.java)
+
+    @Provides
+    @Singleton
+    fun providesDatabase(app: Application): MarverlUniverseDatabase =
+        Room.databaseBuilder(app, MarverlUniverseDatabase::class.java, "marvel_universe_database")
+            .build()
 
 }

@@ -1,8 +1,11 @@
 package com.pezesha.marveluniverse.models
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
+@Entity(tableName = "characters")
 @Parcelize
 data class Character(
     val name : String,
@@ -11,7 +14,7 @@ data class Character(
     val series : Comics?,
     val stories : Stories?,
     val thumbnail : Thumbnail?,
-    val id : Int?
+    @PrimaryKey val id : Int?
 
 
 ) : Parcelable {

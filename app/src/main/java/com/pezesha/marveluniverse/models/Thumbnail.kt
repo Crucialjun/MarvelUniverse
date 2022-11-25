@@ -1,7 +1,11 @@
 package com.pezesha.marveluniverse.models
 
 import android.os.Parcelable
+import androidx.room.TypeConverter
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.parcelize.Parcelize
+import org.json.JSONObject
 
 @Parcelize
 data class Thumbnail(
@@ -19,5 +23,17 @@ enum class Extension(val value: String) {
             "jpg" -> Jpg
             else  -> throw IllegalArgumentException()
         }
+    }
+}
+
+class ThumbnailTypeConverter{
+    @TypeConverter
+    fun fromThumbnail(thumbnail: Thumbnail) : String {
+        return Gson().toJson(thumbnail)
+    }
+
+    @TypeConverter
+    fun toThumbnail(thumbnailString : String) : Thumbnail{
+        return Gson().fromJson(thumbnailString,object : TypeToken<Thumbnail>() {}.type)
     }
 }

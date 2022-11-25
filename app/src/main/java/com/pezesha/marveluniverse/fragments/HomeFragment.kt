@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pezesha.marveluniverse.Resource
 import com.pezesha.marveluniverse.adapters.CharactersListAdapter
 import com.pezesha.marveluniverse.adapters.CharactersPagingDataAdapter
 import com.pezesha.marveluniverse.databinding.FragmentHomeBinding
@@ -23,10 +25,7 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val viewModel by viewModels<HomeViewModel>()
-    
-
-
+    private val viewModel: HomeViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,17 +46,28 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerview = binding.recyclerCharacters
 
-        val recyclerAdapter = CharactersPagingDataAdapter()
+        val recyclerAdapter = CharactersListAdapter()
 
-        viewModel.characters.observe(viewLifecycleOwner){
-            recyclerAdapter.submitData(viewLifecycleOwner.lifecycle,it)
+        viewModel.characters.observe(viewLifecycleOwner) {
+            Log.d("TAG", "onViewCreatedDta is ${it.data} ")
+            recyclerAdapter.submitList(it.data)
+
+            binding.progressBarCharactersFragment.isVisible =
+                it is Resource.Loading && it.data.isNullOrEmpty()
+
         }
-        recyclerview.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = recyclerAdapter
 
+        binding.apply {
+            recyclerview.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = recyclerAdapter
+
+
+            }
 
         }
+
+
     }
 
     override fun onDestroy() {
