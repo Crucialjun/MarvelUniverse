@@ -96,6 +96,7 @@
             app:layout_constraintTop_toBottomOf="@id/series_list_view" />
 
         <ListView
+            android:nestedScrollingEnabled="true"
             android:id="@+id/comics_list_view"
             android:layout_width="0dp"
             android:layout_height="120dp"
@@ -107,7 +108,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <ListView
-
+            android:nestedScrollingEnabled="true"
             android:id="@+id/series_list_view"
             android:layout_width="0dp"
             android:layout_height="120dp"
@@ -118,7 +119,7 @@
             app:layout_constraintTop_toBottomOf="@id/textView7" />
 
         <ListView
-
+            android:nestedScrollingEnabled="true"
             android:id="@+id/stories_list_view"
             android:layout_width="0dp"
             android:layout_height="120dp"
