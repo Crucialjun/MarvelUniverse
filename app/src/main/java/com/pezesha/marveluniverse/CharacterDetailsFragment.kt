@@ -22,28 +22,23 @@ class CharacterDetailsFragment : Fragment() {
 
     private val args by navArgs<CharacterDetailsFragmentArgs>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCharacterDetailsBinding.inflate(inflater,container,false)
 
         binding.textView3.text = args.character.name
 
 
         if(args.character.description.isEmpty()){
-            binding.txtDescription.text = "No description"
+            binding.txtDescription.text = getString(R.string.no_description)
         }else{
             binding.txtDescription.text = args.character.description
         }
 
 
-        var comicListitems = ArrayList<String>()
+        val comicListitems = ArrayList<String>()
 
         for (item in args.character.comics!!.items){
             comicListitems.add(item.name)
@@ -53,7 +48,7 @@ class CharacterDetailsFragment : Fragment() {
             comicListitems
         )
 
-        var seriesListitems = ArrayList<String>()
+        val seriesListitems = ArrayList<String>()
 
         for (item in args.character.series!!.items){
             seriesListitems.add(item.name)
@@ -63,7 +58,7 @@ class CharacterDetailsFragment : Fragment() {
             seriesListitems
         )
 
-        var storiesListitems = ArrayList<String>()
+        val storiesListitems = ArrayList<String>()
 
         for (item in args.character.stories!!.items){
             storiesListitems.add(item.name)

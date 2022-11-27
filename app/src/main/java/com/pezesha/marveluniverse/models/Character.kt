@@ -17,6 +17,4 @@ data class Character(
     @PrimaryKey val id : Int?
 
 
-) : Parcelable {
-
-}
+) : Parcelable

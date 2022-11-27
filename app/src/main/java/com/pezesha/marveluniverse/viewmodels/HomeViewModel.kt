@@ -1,12 +1,9 @@
 package com.pezesha.marveluniverse.viewmodels
 
-import androidx.lifecycle.*
-import androidx.paging.cachedIn
-import com.pezesha.marveluniverse.api.ApiResponse
-import com.pezesha.marveluniverse.api.MarvelApi
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.pezesha.marveluniverse.repo.MarvelRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel

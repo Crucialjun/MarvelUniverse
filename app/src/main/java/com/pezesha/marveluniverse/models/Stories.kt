@@ -5,7 +5,6 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.parcelize.Parcelize
-import org.json.JSONObject
 
 @Parcelize
 data class Stories(

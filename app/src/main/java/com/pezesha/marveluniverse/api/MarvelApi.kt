@@ -1,9 +1,6 @@
 package com.pezesha.marveluniverse.api
 
-import android.util.Log
-import com.pezesha.marveluniverse.BuildConfig
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface MarvelApi {

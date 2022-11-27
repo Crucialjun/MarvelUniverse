@@ -9,5 +9,5 @@ data class Data (
     val limit: Long,
     val total: Long,
     val count: Long,
-    val results: List<com.pezesha.marveluniverse.models.Character>
+    val results: List<Character>
 ) : Parcelable

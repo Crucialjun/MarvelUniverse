@@ -1,6 +1,5 @@
 package com.pezesha.marveluniverse.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -9,15 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.nostra13.universalimageloader.core.ImageLoader
 import com.pezesha.marveluniverse.R
 import com.pezesha.marveluniverse.databinding.CharacterItemBinding
 import com.pezesha.marveluniverse.models.Character
 
 class CharactersPagingDataAdapter :
-    PagingDataAdapter<com.pezesha.marveluniverse.models.Character, CharactersPagingDataAdapter.CharacterViewHolder>(
+    PagingDataAdapter<Character, CharactersPagingDataAdapter.CharacterViewHolder>(
         diffCallback = object :
-            DiffUtil.ItemCallback<com.pezesha.marveluniverse.models.Character>() {
+            DiffUtil.ItemCallback<Character>() {
             override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
                 return oldItem.id == newItem.id
             }
@@ -31,8 +29,7 @@ class CharactersPagingDataAdapter :
     inner class CharacterViewHolder(private val binding: CharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(character: com.pezesha.marveluniverse.models.Character) {
-            Log.d("Image Url", "The image url is :${character.thumbnail!!.path}.jpg ")
+        fun bind(character: Character) {
             binding.apply {
 
                 Glide.with(itemView).setDefaultRequestOptions(RequestOptions().placeholder(R.drawable.ic_baseline_home_24).error(R.drawable.ic_baseline_home_24))

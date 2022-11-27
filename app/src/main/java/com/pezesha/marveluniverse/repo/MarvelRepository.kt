@@ -1,11 +1,6 @@
 package com.pezesha.marveluniverse.repo
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingSource
-import androidx.paging.liveData
 import androidx.room.withTransaction
-import com.pezesha.marveluniverse.MarvelCharactersPagingSource
 import com.pezesha.marveluniverse.MarverlUniverseDatabase
 import com.pezesha.marveluniverse.api.MarvelApi
 import com.pezesha.marveluniverse.networkBoundResource

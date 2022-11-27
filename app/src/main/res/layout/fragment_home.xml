@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/akaya_telivigala"
-        android:text="Marvel Characters"
+        android:text="@string/marvel_characters"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +52,7 @@
         android:layout_marginStart="16dp"
         android:src="@drawable/marvel"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/marvel_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

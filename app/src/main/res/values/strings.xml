@@ -2,5 +2,14 @@
     <string name="app_name">Marvel Universe</string>
     <string name="home">Home</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="character_image">Character Image</string>
+    <string name="comics">Comics</string>
+    <string name="series">Series</string>
+    <string name="stories">Stories</string>
+    <string name="more_details">More Details</string>
+    <string name="character_name">Character Name</string>
+    <string name="marvel_characters">Marvel Characters</string>
+    <string name="marvel_logo">Marvel Logo</string>
+    <string name="description">Description:</string>
+    <string name="no_description">No description</string>
 </resources>

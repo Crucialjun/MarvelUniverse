@@ -1,6 +1,5 @@
 package com.pezesha.marveluniverse
 
-import androidx.room.Query
 import kotlinx.coroutines.flow.*
 
 fun <ResultType, RequestType> networkBoundResource(
